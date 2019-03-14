@@ -1,18 +1,19 @@
+{% load static %}
 <!DOCTYPE html>
 <html>
 	<head>
 		<meta charset="UTF-8">
 		<title></title>
-		<link rel="stylesheet" href="css/login.css" />
-		<script type="text/javascript" src="js/jquery-1.12.3.js" ></script>
-		<script type="text/javascript" src="js/jquery.cookie.js" ></script>
-		<script type="text/javascript" src="js/login.js" ></script>
+		<link rel="stylesheet" href="{% static 'css/login.css'  %}" />
+		<script type="text/javascript" src="{% static 'js/jquery-1.12.3.js'  %}" ></script>
+		<script type="text/javascript" src="{% static 'js/jquery.cookie.js'  %}" ></script>
+		<script type="text/javascript" src="{% static 'js/login.js'  %}" ></script>
 	</head>
 	<body>
 		<div class="login_head">
 			<div class="loginh_con">
 				<div class="loginh_left">
-				    <img src="img/register/QQ图片20160909171624_23.gif" />
+				    <img src="{% static 'img/register/QQ图片20160909171624_23.gif'  %}" />
 				</div>
 				<div class="loginh_right">
 					<ul>
@@ -59,7 +60,7 @@
 						<div class="link">
 							<span>
 								<h5>合作网站登录：</h5>
-								<img src="img/register/QQ截图20160920134847.png" />
+								<img src="{% static 'img/register/QQ截图20160920134847.png'  %}" />
 							</span>
 							
 							<a href="#">注册账号</a>

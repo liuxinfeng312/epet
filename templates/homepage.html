@@ -34,9 +34,10 @@
 		 		    </span>
         </div>
         <div class="header_right">
+            用户名：{{ user.u_name }}
             <ul>
-                <li><a href="login.html">[登录]</a></li>
-                <li><a href="register.html">[注册]</a></li>
+                <li><a href="{% url 'pet:login' %}">[登录]</a></li>
+                <li><a href="{% url 'pet:register' %}">[注册]</a></li>
                 <li><a href="shopcar.html">购物车</a></li>
                 <li id="mypet">
                     <a href="#">我的E宠<img src=" {% static 'img/common_img/h5.gif' %}"></a>
