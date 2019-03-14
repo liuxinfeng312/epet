@@ -25,7 +25,7 @@ SECRET_KEY = 'ir@&&jeqlhx8i_vu4u=lnb-0ntx(51ed&b)dv^kx*(fjz5&1@-'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -77,8 +77,13 @@ WSGI_APPLICATION = 'epet.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME':'epet',
+        'USER':'root',
+        'PASSWORD':'1204',
+        'HOST':'127.0.0.1',
+        'PORT':'3306',
+
     }
 }
 
@@ -120,3 +125,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.11/howto/static-files/
 
 STATIC_URL = '/static/'
+
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'static')
+]
