@@ -34,7 +34,7 @@
 		 		    </span>
         </div>
         <div class="header_right">
-            用户名：{{ user.u_name }}
+            <i style="float: left ;left:250px; position: absolute">用户名：{{ user.u_name }} &nbsp; <a href="{% url 'pet:logout' %}">注销</a></i>
             <ul>
                 <li><a href="{% url 'pet:login' %}">[登录]</a></li>
                 <li><a href="{% url 'pet:register' %}">[注册]</a></li>
@@ -611,7 +611,16 @@
 
 
             </div>
-
+            <div>
+                <div class="time_list">
+{#                    <img src="{% static 'img/content/c2e94e289443a4bfe84f15d077aec3ef.jpg@!200w-c.jpg' %}" alt="">#}
+{#                    <p>风来客 幼犬营养肉压骨 肌肉味 6支装</p>#}
+{#                    <a href="#"><strong><h2>￥84.3</h2> <i>￥99.6</i> <em>立享7.1折</em> </strong> <span>即将开始</span></a>#}
+                </div>
+                <div class="time_list"></div>
+                <div class="time_list"></div>
+                <div class="time_list"></div>
+            </div>
         </div>
 
     </div>
@@ -619,6 +628,23 @@
     <div class="content_center2">
         <p>E仔今天推荐了哪些精品？</p>
         <div class="center2_main">
+
+            {% for  good in goods %}
+
+
+
+            <div class="center2_con">
+                <a href="{% url 'pet:goods' good.id%}">
+                <img src="{{ good.g_img }}" alt="">
+                <span><h5> {{ good.g_name }}</h5>
+                <em> <i>￥{{ good.g_price }}</i> <b>推荐的理由</b> </em>
+                    <p>{{ good.g_txt }}</p>
+                </span>
+                </a>
+            </div>
+            {% endfor %}
+
+
 
         </div>
     </div>

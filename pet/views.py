@@ -2,10 +2,11 @@ import hashlib
 import random
 import time
 
+from django.http import JsonResponse
 from django.shortcuts import render, redirect
 
 # Create your views here.
-from pet.models import User
+from pet.models import User, Goods
 
 
 def index(request):
@@ -17,8 +18,11 @@ def homepage(request):
     user=None
     if token:
         user=User.objects.get(token=token)
+    goods=Goods.objects.all()
 
-    return render(request,'homepage.html' ,context={'user':user})
+
+    return render(request,'homepage.html' ,context={'user':user,
+                                                    'goods':goods})
 
 
 def genrate_token():
@@ -62,4 +66,54 @@ def login(request):
         return render(request,'login.html')
     elif request.method=='POST':
 
-        pass
+        name=request.POST.get('name')
+        password=request.POST.get('password')
+        users=User.objects.filter(u_name=name).filter(u_password=genrate_password(password))
+        if users.exists():
+            user=users.first()
+            user.token=genrate_token()
+            user.save()
+            response=redirect('pet:homepage')
+            request.session['token']=user.token
+            return response
+        else:
+            return render(request,'login.html')
+
+
+def goods(request,index=1):
+
+    token=request.session.get('token')
+    users=User.objects.filter(token=token)
+    good=Goods.objects.get(id=index)
+    if users.exists():
+
+        return render(request,'goods.html',context={'good':good})
+    else:
+
+        return render(request,'login.html')
+
+
+def logout(request):
+    request.session.flush()
+    response=redirect('pet:homepage')
+
+
+    return response
+
+
+
+
+def addcart(request):
+    goodsid = request.GET.get('goodid')
+    print(goodsid)
+    token=request.session.get('token')
+    user=User.objects.get(token=token)
+    good=Goods.objects.get(pk=goodsid)
+
+
+    response_data = {
+        'staus': 1
+    }
+
+
+    return JsonResponse(response_data)

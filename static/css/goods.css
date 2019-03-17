@@ -65,7 +65,7 @@
 .goodscar{ width: 1200px; height: 600px; margin: 0 auto; position: relative; }
 .glass{ width: 400px; height: 450px; float: left;  }
 .info{ width: 800px; height: 650px; float: right; background: #fcfcfc;}
-#smallImg{ width: 200px; height: 200px; background: url(../img/goods/1726c8e64575c7ee8e87168120d59479_看图王.jpg) center; background-size: cover; position: absolute; left: 100px; top: 50px;}
+#smallImg{ width: 200px; height: 200px; background:  center; background-size: cover; position: absolute; left: 100px; top: 50px;}
 #smallArea{ display: none; width: 50px; height: 50px; background: rgba(200, 255, 200, 0.3); position: absolute; left: 50px; top: 20px;}
 #bigArea{display: none; overflow: hidden; width: 400px; height: 400px; background: rgba(100,200,100, 0.3); position: absolute; left: 400px; top: 0px;}
 #bigImg{ position: absolute; left: 0; top: 0; width: 800px; height: 800px;}

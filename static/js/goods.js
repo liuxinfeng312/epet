@@ -173,5 +173,24 @@ $(function(){
 		
 		
 	})
-						 		 		 	 
-})
+
+
+
+
+	$('#addcarts').click(function () {
+		console.log(1111)
+		goodid = $(this).attr('good-id')
+		request_data ={
+			'goodid':goodid
+		}
+
+		$.get('/addcart/',request_data,function (response) {
+			console.log(response.staus)
+		})
+
+
+	})
+
+  })
+
+
