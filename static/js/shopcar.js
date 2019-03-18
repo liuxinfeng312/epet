@@ -69,7 +69,9 @@ $(function(){
 		
  
 	}
- 
+	var temp=$('.shopcar_list'>'.num1').attr(value)*$('.shopcar_list'>'span').text()
+	$('.shopcar_list'>'.price').text(temp)
+
 	
 	
 	

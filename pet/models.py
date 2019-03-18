@@ -17,7 +17,7 @@ class Goods(models.Model):
 class Cart(models.Model):
     user=models.ForeignKey(User)
     goods=models.ForeignKey(Goods)
-    number=models.CharField(max_length=40,default=1)
+    number=models.IntegerField(default=1)
     isselect=models.BooleanField(default=True)
 
 class Order(models.Model):

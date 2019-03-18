@@ -28,7 +28,7 @@
 		 			<ul>
 			 			<li><a href="#">[登录]</a></li>
 			 			<li><a href="#">[注册]</a></li>
-			 			<li><a href="shopcar.html">购物车</a></li>
+			 			<li><a href="{% url 'pet:shopcar' %}">购物车</a></li>
 			 			<li id="mypet">
 			 				<a href="#">我的E宠<img src=" {% static 'img/common_img/h5.gif' %}"></a>
 					 		<div class="mypet">
@@ -81,7 +81,7 @@
 					</h5>
 					<h4>
 						<img src=" {% static 'img/homepage/shopping-cart.gif' %}">
-						<a href="#">购物车（0）</a>
+						<a href="{% url 'pet:shopcar' %}">购物车（0）</a>
 					</h4>
 				</div>
 

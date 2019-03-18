@@ -134,45 +134,45 @@ $(function(){
    	})
        
 	//添加购物车
-	$(".addCart").click(function(){
-		 
-	    //将当前点击的商品加入购物车(使用cookie存储商品信息)
-		var goodsId = $(this).parent().parent().parent().siblings().find(".goodsImg").attr("src"); //商品ID
-		var goodsName = $(this).parent().parent().find(".goodsName").html(); //商品名称
-		var goodsNum = $(this).parent().siblings(".size").find(".goodsNum").val(); //商品数量
-		var goodsPrice = $(this).parent().siblings(".price").find(".goodsPrice").html(); //商品价格		
-		//如果是第一次加入购物车(购物车中还没有商品, cookie中没有cart), 那就给一个空的数组
-		//如果是第二次加入购物车(购物车中已经存在商品, cookie中存在cart), 那就在原来保存在cookie中的商品基础上添加新的商品 
-		//console.log( typeof $.cookie("cart") ); //string 
-		var goodsList = $.cookie("cart") ? JSON.parse( $.cookie("cart") ) : [];
-		
-		//先判断购物车中是否存在我即将要添加的商品
-		var isExists = false; //表示是否存在相同商品
-		for (var i=0; i<goodsList.length; i++) {
-			//如果存在相同的商品, 则把数量++, 不需要重新添加新的商品
-			if (goodsId == goodsList[i].id) {
-				goodsList[i].num++;
-				isExists = true; //表示存在相同商品
-			}
-		}
-		
-		//如果不存在相同商品, 则添加新商品
-		if (!isExists) {
-			//添加一个新商品到购物车
-			var goods = {
-				id: goodsId,
-				name: goodsName,
-				price: goodsPrice,
-				num: goodsNum
-			}
-			goodsList.push(goods);
-		}
-		
-		$.cookie("cart", JSON.stringify(goodsList), {expires:22, path:"/"});
-		console.log( $.cookie("cart") );
-		
-		
-	})
+	// $(".addCart").click(function(){
+	//
+	//     //将当前点击的商品加入购物车(使用cookie存储商品信息)
+	// 	var goodsId = $(this).parent().parent().parent().siblings().find(".goodsImg").attr("src"); //商品ID
+	// 	var goodsName = $(this).parent().parent().find(".goodsName").html(); //商品名称
+	// 	var goodsNum = $(this).parent().siblings(".size").find(".goodsNum").val(); //商品数量
+	// 	var goodsPrice = $(this).parent().siblings(".price").find(".goodsPrice").html(); //商品价格
+	// 	//如果是第一次加入购物车(购物车中还没有商品, cookie中没有cart), 那就给一个空的数组
+	// 	//如果是第二次加入购物车(购物车中已经存在商品, cookie中存在cart), 那就在原来保存在cookie中的商品基础上添加新的商品
+	// 	//console.log( typeof $.cookie("cart") ); //string
+	// 	var goodsList = $.cookie("cart") ? JSON.parse( $.cookie("cart") ) : [];
+	//
+	// 	//先判断购物车中是否存在我即将要添加的商品
+	// 	var isExists = false; //表示是否存在相同商品
+	// 	for (var i=0; i<goodsList.length; i++) {
+	// 		//如果存在相同的商品, 则把数量++, 不需要重新添加新的商品
+	// 		if (goodsId == goodsList[i].id) {
+	// 			goodsList[i].num++;
+	// 			isExists = true; //表示存在相同商品
+	// 		}
+	// 	}
+	//
+	// 	//如果不存在相同商品, 则添加新商品
+	// 	if (!isExists) {
+	// 		//添加一个新商品到购物车
+	// 		var goods = {
+	// 			id: goodsId,
+	// 			name: goodsName,
+	// 			price: goodsPrice,
+	// 			num: goodsNum
+	// 		}
+	// 		goodsList.push(goods);
+	// 	}
+	//
+	// 	$.cookie("cart", JSON.stringify(goodsList), {expires:22, path:"/"});
+	// 	console.log( $.cookie("cart") );
+	//
+	//
+	// })
 
 
 
@@ -187,11 +187,11 @@ $(function(){
 		}
 
 		$.get('/addcart/',request_data,function(response) {
-			console.log(response.staus)
+			console.log(response)
 			if (response['status']=='-1'){
 				window.open('/login/',target='_self')
 			}else{
-				conlose.log(response)
+				console.log(response)
 
 			}
 
