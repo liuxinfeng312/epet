@@ -6,7 +6,7 @@ from django.http import JsonResponse
 from django.shortcuts import render, redirect
 
 # Create your views here.
-from pet.models import User, Goods
+from pet.models import User, Goods, Cart
 
 
 def index(request):
@@ -104,16 +104,32 @@ def logout(request):
 
 
 def addcart(request):
-    goodsid = request.GET.get('goodid')
-    print(goodsid)
+    response_data={}
+
     token=request.session.get('token')
-    user=User.objects.get(token=token)
-    good=Goods.objects.get(pk=goodsid)
+    if token:
+        users=User.objects.filter(token=token)
+
+        if users.exists():
+            user=users.first()
+            goodsid = request.GET.get('goodid')
+            good = Goods.objects.get(pk=goodsid)
+            carts=Cart.objects.filter(user=user).filter(goods=good)
+            if carts.exists():
+                cart=carts.first()
+                cart.number=cart.number+1
+                cart.save()
+            else:
+                cart=Cart()
+                cart.goods=good
+                cart.number=1
+                cart.save()
+            response_data['status']=1
+            response_data['number']=cart.number
+            response_data['msg']='添加{}购物车成功：{}'.format(cart.goods.g_name,cart.number)
 
 
-    response_data = {
-        'staus': 1
-    }
-
-
+            return JsonResponse(response_data)
+    response_data['status'] = -1
+    response_data['msg'] = '请登录后操作'
     return JsonResponse(response_data)

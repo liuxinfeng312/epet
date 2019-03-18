@@ -178,14 +178,24 @@ $(function(){
 
 
 	$('#addcarts').click(function () {
-		console.log(1111)
+		console.log(11112)
 		goodid = $(this).attr('good-id')
+		var $that=$(this)
+
 		request_data ={
 			'goodid':goodid
 		}
 
-		$.get('/addcart/',request_data,function (response) {
+		$.get('/addcart/',request_data,function(response) {
 			console.log(response.staus)
+			if (response['status']=='-1'){
+				window.open('/login/',target='_self')
+			}else{
+				conlose.log(response)
+
+			}
+
+
 		})
 
 
