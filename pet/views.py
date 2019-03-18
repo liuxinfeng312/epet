@@ -108,7 +108,7 @@ def addcart(request):
     response_data={}
 
     token=request.session.get('token','')
-    print('333 ')
+
     if token:
         users=User.objects.filter(token=token)
 
@@ -143,7 +143,7 @@ def shopcar(request):
     user=User.objects.get(token=token)
     carts=Cart.objects.filter(user=user)
     price=0
-    price1=0
+
     for cart in carts:
         price+=float(cart.goods.g_price)*float(cart.number)
 
@@ -182,12 +182,15 @@ def generateorder(request):
             orderGoods.save()
             cart.delete()
 
-    orders=Order.objects.all()
-    return render(request,'orderinfo.html',context={'orders':orders,})
+        orders=Order.objects.filter(user=user)
+
+        return render(request,'orderinfo.html',context={'orders':orders})
 
 
 def orderinfo(request):
-    return None
+    orderGoods = OrderGoods.objects.all()
+
+    return render(request,'ordertext.html',context={'orderGoods':orderGoods})
 
 
 def changeorder(request):
