@@ -87,8 +87,9 @@ def goods(request,index=1):
     users=User.objects.filter(token=token)
     good=Goods.objects.get(id=index)
     if users.exists():
-
-        return render(request,'goods.html',context={'good':good})
+        user=users.first()
+        return render(request,'goods.html',context={'good':good,
+                                                    'user':user})
     else:
 
         return render(request,'login.html')
@@ -115,11 +116,12 @@ def addcart(request):
         if users.exists():
             user=users.first()
             goodsid = request.GET.get('goodid')
+            num=request.GET.get('num')
             good = Goods.objects.get(pk=goodsid)
             carts=Cart.objects.filter(user=user).filter(goods=good)
             if carts.exists():
                 cart=carts.first()
-                cart.number=cart.number+1
+                cart.number=cart.number+int(num)
                 cart.save()
             else:
                 cart=Cart()

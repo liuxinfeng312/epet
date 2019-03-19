@@ -21,11 +21,15 @@
 		 		<div class="header_left">
 		 			<span>
 			 			<a href="#" class="header_a">E宠就是正品</a>
+
 			 			<i>评价(<a href="#">389.4万</a>)</i>
+
 		 		    </span>
 		 		</div>
 		 		<div class="header_right">
+                            <strong style="float: left;position: absolute;left: 250px">亲爱的{{ user.u_name }}</strong>
 		 			<ul>
+                        <li></li>
 			 			<li><a href="#">[登录]</a></li>
 			 			<li><a href="#">[注册]</a></li>
 			 			<li><a href="{% url 'pet:shopcar' %}">购物车</a></li>
@@ -220,9 +224,9 @@
 								</div>
 								<div class="buy">
 									<span>我要买：</span>
-									<a href="#" class="minu">-</a>
+									<a  class="minu">-</a>
 									<input type="text" value="1" class="goodsNum">
-									<a href="#" class="add">+</a>
+									<a  class="add">+</a>
 									个
 								</div>
 							</div>
@@ -234,31 +238,13 @@
 							<div class="car_btn">
 								<input type="button" value="加入购物车" class="addCart" id="addcarts" good-id="{{ good.id }}">
 								<a href="#"><i></i>咨询</a>
+                                <a href="{% url 'pet:shopcar' %}">购物车</a>
 							</div>
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

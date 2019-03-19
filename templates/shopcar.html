@@ -97,12 +97,14 @@
                                     <p>{{ cart.goods.g_name }}</p>
                                 </div>
                                 <div class="num">
-                                    <em>-</em>
-                                    <input type="text" value={{ cart.number }} class='num1'>
-                                    <i>+</i>
+                                   <em class="minu"  good-id="{{ cart.goods.id }}" >-</em>
+
+                                    <input type="text" value={{ cart.number }} class='num1' goodids="">
+
+                                    <i class="add"  goods-id='{{ cart.goods.id }}'>+</i>
                                 </div>
                                 <div class="price">
-                                    ￥{{ cart.number }} * {{ cart.goods.g_price }}
+                                    ￥{{ cart.goods.g_price }} x {{ cart.number }}
                                     <span>￥{{ cart.goods.g_price }}</span>
                                 </div>
                                 <div class="remove">
@@ -135,7 +137,7 @@
 				</div>
 			</div>
 			<div class="still">
-				<input type="button" value="继续购物">
+				<input type="button" value="继续购物" onclick='javascript:history.back(-1);'>
 			</div>
 		</div>
 

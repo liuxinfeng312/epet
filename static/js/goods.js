@@ -122,7 +122,7 @@ $(function(){
 		
 	})
     //增加数量
-    var i = 1; 
+    var i = 1;
     $(".add").click(function(){    	 
     	$(".goodsNum").val(i++);     	 
     })
@@ -181,9 +181,12 @@ $(function(){
 		console.log(11112)
 		goodid = $(this).attr('good-id')
 		var $that=$(this)
-
+		var num=0
+		num=$('.goodsNum').val()
+		console.log(num)
 		request_data ={
-			'goodid':goodid
+			'goodid':goodid,
+			'num':num
 		}
 
 		$.get('/addcart/',request_data,function(response) {
